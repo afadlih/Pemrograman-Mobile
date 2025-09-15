@@ -1,95 +1,128 @@
-# Laporan Tugas Praktikum Pengantar Bahasa Pemrograman Dart (Bagian 1)
+# Laporan Tugas Praktikum: Pengantar Bahasa Pemrograman Dart (Bagian 2)
 
-Tugas ini berisi jawaban dan laporan untuk tugas praktikum pengantar bahasa pemrograman Dart.
+## Praktikum 1: Menerapkan Control Flows (if/else)
 
----
+Praktikum ini berfokus pada penggunaan pernyataan `if/else` dan pentingnya tipe data boolean dalam kondisi.
 
-## **1. Soal Modifikasi Kode**
-
-**Tugas:**  
-Modifikasi kode perulangan `for` agar menghasilkan output sesuai yang diminta.
-
-**Jawaban:**  
-Kode yang dimodifikasi terdapat pada folder `src/`.
-
+**Kode Asli (Bermasalah):**
 ```dart
-void main() {
-    for (int i = 0; i < 10; i++) {
-        print('Nama saya adalah [Nama Anda], sekarang berumur ${i + 9}');
-    }
+String test = "true";
+if (test) {
+    print("Kebenaran");
 }
 ```
 
-Penjelasan:  
-Ekspresi `${i + 9}` digunakan untuk menghasilkan urutan umur dari 9 hingga 18, sesuai dengan perulangan dari `i = 0` sampai `9`.
-
-![Output Kode](img/image1.png)
-
----
-
-## **2. Soal Pemahaman Bahasa Pemrograman Dart**
-
-**Pertanyaan:**  
-Mengapa sangat penting untuk memahami bahasa pemrograman Dart sebelum kita menggunakan framework Flutter? Jelaskan!
-
-**Jawaban:**  
-Memahami Dart sangat penting karena Dart adalah bahasa pemrograman yang digunakan oleh Flutter. Semua logika, widget, dan fungsionalitas aplikasi Flutter ditulis dalam Dart. Tanpa memahami Dart, mustahil untuk membangun aplikasi Flutter.
-
----
-
-## **3. Soal Rangkuman Materi**
-
-**Pertanyaan:**  
-Rangkumlah materi dari codelab ini menjadi poin-poin penting yang dapat Anda gunakan untuk membantu proses pengembangan aplikasi mobile menggunakan framework Flutter.
-
-**Jawaban:**
-
-- **Fungsi `main()`:** Titik awal eksekusi program.
-- **Variabel dan Tipe Data:** Dart type-safe (`var`, `String`, `int`) dan memiliki kata kunci `final`/`const` untuk variabel yang tidak bisa diubah.
-- **Perulangan (`for`, `while`):** Berguna untuk membuat daftar widget secara dinamis.
-- **String Interpolation:** Menggunakan `${variabel}` untuk menyisipkan nilai variabel ke dalam teks, sangat efisien untuk UI dinamis.
-
----
-
-## **4. Soal Null Safety dan Late Variabel**
-
-**Pertanyaan:**  
-Buatlah penjelasan dan contoh eksekusi kode tentang perbedaan Null Safety dan Late variabel!
-
-**Jawaban:**
-
-- **Null Safety:**  
-    Fitur Dart untuk mencegah error dari variabel yang bernilai `null`. Variabel harus diberi tanda `?` (mis. `String?`) jika bisa bernilai `null`.
-
-- **Late Variabel:**  
-    Kata kunci `late` menandakan bahwa variabel akan diinisialisasi nantinya sebelum digunakan pertama kali. Ini berguna untuk variabel yang nilainya belum tersedia saat deklarasi.
-
-**Contoh Kode:**
-
+**Kode yang Telah Diperbaiki:**
 ```dart
-// Kode ini menunjukkan Null Safety dan Late Variabel
-void main() {
-    // Contoh Null Safety:
-    String? namaBelakang; // Variabel ini bisa null
-    // print(namaBelakang.length); // Error! Karena variabel bisa null
-
-    // Kita harus melakukan pengecekan null sebelum menggunakannya
-    if (namaBelakang != null) {
-        print('Panjang nama belakang: ${namaBelakang.length}');
-    } else {
-        print('Variabel namaBelakang adalah null.');
-    }
-
-    // Contoh Late Variabel:
-    late String deskripsiProduk;
-    
-    // Asumsikan di sini ada operasi yang membutuhkan waktu
-    // dan baru bisa menginisialisasi variabel
-    deskripsiProduk = 'Produk terbaru dengan fitur inovatif.';
-    
-    // Karena sudah diinisialisasi, variabel 'deskripsiProduk' aman untuk digunakan
-    print(deskripsiProduk);
+String test = "true";
+if (test == "true") {
+    print("Kebenaran");
 }
 ```
 
-![Hasil Code](img/image.png)
+**Penjelasan:**  
+Kode asli mengalami error karena Dart membutuhkan ekspresi boolean (`true` atau `false`) di dalam kondisi `if`. Variabel `test` bertipe `String` dengan nilai `"true"`, bukan `bool`. Solusinya adalah dengan membandingkan nilai string-nya secara eksplisit.
+
+**Tampilan hasil praktikum 1:**  
+*Output program setelah perbaikan kode if/else*
+
+![Screenshot Praktikum 1](img/Praktikum1codelab3.png)
+
+---
+
+## Praktikum 2: Menerapkan Perulangan (while dan do-while)
+
+Praktikum ini membahas perulangan `while` dan `do-while`, serta masalah inisialisasi variabel.
+
+**Kode Asli (Bermasalah):**
+```dart
+while (counter < 33) {
+    print(counter);
+    counter++;
+}
+```
+
+**Kode yang Telah Diperbaiki:**
+```dart
+int counter = 0;
+while (counter < 33) {
+    print(counter);
+    counter++;
+}
+```
+
+**Penjelasan:**  
+Kode asli mengalami error karena variabel `counter` tidak pernah dideklarasikan atau diinisialisasi. Solusinya adalah dengan menambahkan `int counter = 0;` sebelum perulangan dimulai.
+
+**Tampilan hasil praktikum 2:**  
+*Output program setelah perbaikan kode perulangan while*
+
+![Screenshot Praktikum 2](img/Praktikum1codelab3.png)
+
+---
+
+## Praktikum 3: Menerapkan Perulangan (for dan break/continue)
+
+Praktikum ini berfokus pada perulangan `for` dan penggunaan `break` serta `continue`.
+
+**Kode Asli (Bermasalah):**
+```dart
+for (Index = 10; index < 27; index++) {
+    print(Index);
+}
+```
+
+**Kode yang Telah Diperbaiki:**
+```dart
+for (int index = 10; index < 27; index++) {
+    print(index);
+}
+```
+
+**Penjelasan:**  
+Kode ini mengalami error karena Dart bersifat case-sensitive. Variabel `Index` (huruf kapital) berbeda dengan `index` (huruf kecil). Solusinya adalah dengan menggunakan nama variabel yang konsisten dan mendeklarasikan tipe datanya (`int`).
+
+**Tampilan hasil praktikum 3:**  
+*Output program setelah perbaikan kode perulangan for*
+
+![Screenshot Praktikum 3](img/Praktikum1codelab3.png)
+
+---
+
+## Tugas Tambahan: Program Bilangan Prima
+
+Tugas ini mengharuskan pembuatan program untuk menemukan bilangan prima dari 0 hingga 201.
+
+### Kode Program
+```dart
+print('Mencari bilangan prima dari 0 sampai 201...');
+
+for (int i = 2; i <= 201; i++) {
+    if (isPrima(i)) {
+        print('Bilangan prima ditemukan: $i');
+        print('Nama: $nama');
+        print('NIM: $nim');
+        print('---');
+    }
+}
+
+bool isPrima(int number) {
+    if (number <= 1) {
+        return false;
+    }
+    for (int i = 2; i <= number / 2; i++) {
+        if (number % i == 0) {
+            return false;
+        }
+    }
+    return true;
+}
+```
+
+**Penjelasan:**  
+Program ini menggunakan `for loop` untuk mengiterasi angka dari 2 hingga 201. Untuk setiap angka, fungsi `isPrima()` dipanggil untuk memeriksa apakah angka tersebut prima. Jika hasilnya `true`, program akan mencetak bilangan prima beserta nama dan NIM Anda. Fungsi `isPrima` bekerja dengan memeriksa apakah angka memiliki faktor pembagi selain 1 dan dirinya sendiri.
+
+**Tampilan hasil tugas bilangan prima:**  
+*Output program pencarian bilangan prima*
+
+![Screenshot Tugas Bilangan Prima](img/TugasPraktikumcodelab3.png)
