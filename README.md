@@ -6,7 +6,7 @@ Fokus: List, Set, Map, Spread / Control-flow List, Records (Dart 3)
 ## 👤 Data Mahasiswa
 | Nama | NIM | Kelas |
 |------|-----|-------|
-| Ahmad Fadlih Wahyu Sardana | 2341720069 | TI-3H |
+| Ahmad Fadlih Wahyu Sardana | 2341720069 | TI-3F |
 
 ---
 
