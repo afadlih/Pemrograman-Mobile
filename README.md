@@ -49,7 +49,7 @@ final listBaru = List<Object?>.filled(5, null);
 listBaru[1] = "Ahmad Fadlih Wahyu Sardana";
 listBaru[2] = "2341720069";
 ```
-Screenshot: `img/codelab04_dart_part3_praktikum1.png`
+![Praktikum 1 – List](img/codelab04_dart_part3_praktikum1.png)
 
 ---
 
@@ -63,7 +63,7 @@ Set<String> names2 = {};
 names1.add('Ahmad Fadlih Wahyu Sardana');
 names2.addAll(['Ahmad Fadlih Wahyu Sardana', '2341720069']);
 ```
-Screenshot: `img/codelab04_dart_part3_praktikum2.png`
+![Praktikum 2 – Set](img/codelab04_dart_part3_praktikum2.png)
 
 ---
 
@@ -76,7 +76,7 @@ var mhs1 = <String, String>{};
 mhs1['nama'] = 'Ahmad Fadlih Wahyu Sardana';
 mhs1['nim'] = '2341720069';
 ```
-Screenshot: `img/codelab04_dart_part3_praktikum3.png`
+![Praktikum 3 – Map](img/codelab04_dart_part3_praktikum3.png)
 
 ---
 
@@ -94,7 +94,7 @@ var nav = ['Home', 'Furniture', 'Plants', if (promoActive) 'Outlet'];
 var listOfInts = [1, 2, 3];
 var listOfStrings = ['#0', for (var i in listOfInts) '#$i'];
 ```
-Screenshot: `img/codelab04_dart_part3_praktikum4.png`
+![Praktikum 4 – Spread & Control-flow List](img/codelab04_dart_part3_praktikum4.png)
 
 ---
 
@@ -106,7 +106,7 @@ var record = ('first', a: 2, b: true, 'last');
 (int, int) tukar((int, int) pair) => (pair.$2, pair.$1);
 var swapped = tukar((10, 20)); // (20, 10)
 ```
-Screenshot: `img/codelab04_dart_part3_praktikum5.png`
+![Praktikum 5 – Records](img/codelab04_dart_part3_praktikum5.png)
 
 ---
 
@@ -114,7 +114,8 @@ Screenshot: `img/codelab04_dart_part3_praktikum5.png`
 
 === Jawaban Tugas Praktikum ===
 
-Screenshot: `img/codelab04_tugaTugas_Praktikumcodelab04s.png`
+![Jawaban Tugas Praktikum](img/codelab04_tugaTugas_Praktikumcodelab04s.png)
+
 1. Functions dalam bahasa Dart  
 Functions adalah blok kode yang dapat dipanggil untuk melakukan tugas tertentu dan membuat kode modular serta reusable.  
 Contoh:  
