@@ -1,0 +1,306 @@
+import 'dart:io';
+
+void main() {
+  // ===================================
+  // Praktikum 1: Eksperimen Tipe Data List
+  // ===================================
+  print('=== Praktikum 1: Tipe Data List ===\n');
+  var list = [1, 2, 3];
+  assert(list.length == 3);
+  assert(list[1] == 2);
+  print('List length: ${list.length}');
+  print('List[1]: ${list[1]}');
+
+  list[1] = 1;
+  assert(list[1] == 1);
+  print('List[1] setelah diubah: ${list[1]}');
+
+  final listBaru = List<Object?>.filled(5, null);
+  listBaru[1] = "Ahmad Fadlih Wahyu Sardana";
+  listBaru[2] = "2341720069";
+  print('List dengan 5 elemen null dan diisi nama/NIM: $listBaru');
+
+  print('\n' + '=' * 35 + '\n');
+
+  // ===================================
+  // Praktikum 2: Eksperimen Tipe Data Set
+  // ===================================
+  print('=== Praktikum 2: Tipe Data Set ===\n');
+  var halogens = {'fluorine', 'chlorine', 'bromine', 'iodine', 'astatine'};
+  print('Set halogens: $halogens');
+
+  var names1 = <String>{};
+  Set<String> names2 = {}; 
+  var names3 = <String>{}; 
+
+  // Tambahkan elemen nama dan NIM menggunakan .add() dan .addAll()
+  names1.add('Ahmad Fadlih Wahyu Sardana');
+  names1.add('2341720069');
+
+  names2.addAll(['Ahmad Fadlih Wahyu Sardana', '2341720069']);
+
+  // Untuk variabel Map dihapus, jadi names3 tetap Set
+  names3.add('Ahmad Fadlih Wahyu Sardana');
+  names3.add('2341720069');
+
+  print('Set names1: $names1');
+  print('Set names2: $names2');
+  print('Set names3: $names3');
+
+  print('\n' + '=' * 35 + '\n');
+
+  // ===================================
+  // Praktikum 3: Eksperimen Tipe Data Maps
+  // ===================================
+  print('=== Praktikum 3: Tipe Data Maps ===\n');
+
+  // Langkah 1: Map dengan tipe campuran
+  var gifts = {
+    // Key:    Value
+    'first': 'partridge',
+    'second': 'turtledoves',
+    'fifth': 1
+  };
+
+  var nobleGases = {
+    2: 'helium',
+    10: 'neon',
+    18: 2,
+  };
+
+  print('gifts awal: $gifts');
+  print('nobleGases awal: $nobleGases');
+
+  // Penjelasan: Map dapat memiliki value dengan tipe berbeda jika tidak didefinisikan secara spesifik.
+  // Namun, jika ingin konsisten dan menghindari error, sebaiknya tentukan tipe Map.
+
+  // Langkah 3: Map dengan tipe spesifik
+  var mhs1 = Map<String, String>();
+  gifts['first'] = 'partridge';
+  gifts['second'] = 'turtledoves';
+  gifts['fifth'] = 'golden rings';
+
+  // Tambahkan nama dan NIM ke gifts
+  gifts['nama'] = 'Ahmad Fadlih Wahyu Sardana';
+  gifts['nim'] = '2341720069';
+
+  mhs1['nama'] = 'Ahmad Fadlih Wahyu Sardana';
+  mhs1['nim'] = '2341720069';
+
+  var mhs2 = Map<int, String>();
+  nobleGases[2] = 'helium';
+  nobleGases[10] = 'neon';
+  nobleGases[18] = 'argon';
+
+  // Tambahkan nama dan NIM ke nobleGases dan mhs2
+  nobleGases[99] = 'Ahmad Fadlih Wahyu Sardana';
+  nobleGases[100] = '2341720069';
+
+  mhs2[99] = 'Ahmad Fadlih Wahyu Sardana';
+  mhs2[100] = '2341720069';
+
+  print('gifts setelah update: $gifts');
+  print('nobleGases setelah update: $nobleGases');
+  print('Map mhs1: $mhs1');
+  print('Map mhs2: $mhs2');
+
+  print('\n' + '=' * 35 + '\n');
+
+  // ===================================
+  // Praktikum 4: List Spread dan Control-flow
+  // ===================================
+  print('=== Praktikum 4: Spread dan Control-flow ===\n');
+
+  // Langkah 1
+  var listPraktikum4 = [1, 2, 3];
+  var list2 = [0, ...listPraktikum4];
+  print('list: $list');
+  print('list2: $list2');
+  print('list2.length: ${list2.length}');
+
+  // Langkah 3
+  var list1 = [1, 2, null];
+  print('list1: $list1');
+  var list3 = [0, ...?list1];
+  print('list3: $list3');
+  print('list3.length: ${list3.length}');
+
+  // Spread NIM
+  var nimList = ['2341720069'];
+  var listDenganNIM = [0, ...listPraktikum4, ...nimList];
+  print('List dengan spread operator dan NIM: $listDenganNIM');
+
+  // Langkah 4
+  var promoActive = true;
+  var nav = ['Home', 'Furniture', 'Plants', if (promoActive) 'Outlet'];
+  print('Navigasi dengan promoActive=true: $nav');
+  promoActive = false;
+  nav = ['Home', 'Furniture', 'Plants', if (promoActive) 'Outlet'];
+  print('Navigasi dengan promoActive=false: $nav');
+
+  // Langkah 5
+  var login = 'Manager';
+  var nav2 = ['Home', 'Furniture', 'Plants', if (login == 'Manager') 'Inventory'];
+  print('Navigasi dengan login=Manager: $nav2');
+  login = 'User';
+  nav2 = ['Home', 'Furniture', 'Plants', if (login == 'Manager') 'Inventory'];
+  print('Navigasi dengan login=User: $nav2');
+
+  // Langkah 6
+  var listOfInts = [1, 2, 3];
+  var listOfStrings = ['#0', for (var i in listOfInts) '#$i'];
+  assert(listOfStrings[1] == '#1');
+  print('listOfStrings: $listOfStrings');
+
+  print('\n' + '=' * 35 + '\n');
+
+  // ===================================
+  // Praktikum 5: Eksperimen Records
+  // ===================================
+print('=== Praktikum 5: Records ===\n');
+var mahasiswa = ('Ahmad Fadlih Wahyu Sardana', '2341720069');
+print('Record mahasiswa: $mahasiswa');
+
+var record = ('first', a: 2, b: true, 'last');
+print('Field posisional pertama: ${record.$1}');
+print('Field bernama "a": ${record.a}');
+
+// Langkah 1 dan 2
+var record2 = ('first', a: 2, b: true, 'last');
+print(record2);
+
+// Langkah 3: Menggunakan fungsi tukar
+var point = (10, 20);
+print('Sebelum ditukar: $point');
+var swappedPoint = tukar(point);
+print('Setelah ditukar: $swappedPoint');
+
+// Langkah 4: Record type annotation
+(String, int) mahasiswa3 = ('Ahmad Fadlih Wahyu Sardana', 2341720069);
+print('Record mahasiswa3: $mahasiswa3');
+
+// Langkah 5
+var mahasiswa2 = ('Ahmad Fadlih Wahyu Sardana', a: 2, b: true, 'last');
+print(mahasiswa2.$1); // Prints nama
+print(mahasiswa2.a); // Prints 2
+print(mahasiswa2.b); // Prints true
+print(mahasiswa2.$2); // Prints 'last'
+  
+  print('\n' + '=' * 35 + '\n');
+
+  // ===================================
+  // Tugas: Jawaban Pertanyaan
+  // ===================================
+  print('=== Jawaban Tugas Praktikum ===\n');
+  
+  // Tugas 1: Penjelasan Functions dalam bahasa Dart
+  print('1. Functions dalam bahasa Dart:');
+  print('   Functions adalah blok kode yang dapat dipanggil untuk melakukan tugas tertentu.');
+  print('   Functions memungkinkan kode menjadi lebih modular dan dapat digunakan kembali.');
+  
+  // Contoh function sederhana
+  String greeting(String name) => 'Hello, $name!';
+  print('   Contoh function: ${greeting("Ahmad Fadlih")}');
+  print('');
+
+  // Tugas 2: Jenis-jenis parameter di Functions
+  print('2. Jenis-jenis parameter di Functions:');
+  
+  // Parameter posisional wajib
+  print('   a. Parameter posisional wajib:');
+  print('      String greeting(String name) => \'Hello, \$name!\';');
+  
+  // Parameter posisional opsional
+  print('   b. Parameter posisional opsional:');
+  print('      String greet(String name, [String message = \'Hello\']) => \'\$message, \$name!\';');
+  
+  // Parameter bernama opsional
+  print('   c. Parameter bernama opsional:');
+  print('      String createUser(String name, {int? age}) => \'User \$name: \${age ?? "Age not provided"}\';');
+  
+  // Parameter bernama wajib
+  print('   d. Parameter bernama wajib:');
+  print('      int calculateArea({required int width, required int height}) => width * height;');
+  print('');
+
+  // Tugas 3: Functions sebagai first-class objects
+  print('3. Functions sebagai first-class objects:');
+  print('   Functions dapat disimpan dalam variabel, diteruskan sebagai argumen,');
+  print('   dan dikembalikan dari fungsi lain.');
+  
+  // Menyimpan fungsi dalam variabel
+  var add = (int a, int b) => a + b;
+  print('   Fungsi disimpan dalam variabel: ${add(5, 3)}');
+  
+  // Meneruskan fungsi sebagai parameter
+  int calculate(int a, int b, int Function(int, int) operation) => operation(a, b);
+  print('   Fungsi sebagai parameter: ${calculate(5, 3, add)}');
+  print('   Fungsi sebagai parameter: ${calculate(5, 3, (a, b) => a * b)}');
+  print('');
+
+  // Tugas 4: Anonymous Functions
+  print('4. Anonymous Functions:');
+  print('   Anonymous function adalah fungsi tanpa nama yang dapat didefinisikan');
+  print('   dan digunakan langsung tanpa harus mendefinisikannya terlebih dahulu.');
+  
+  var numbers = [1, 2, 3, 4, 5];
+  var doubled = numbers.map((number) => number * 2).toList();
+  print('   List awal: $numbers');
+  print('   List setelah anonymous function: $doubled');
+  print('');
+
+  // Tugas 5: Lexical scope vs Lexical closures
+  print('5. Lexical scope vs Lexical closures:');
+  print('   - Lexical scope: Variabel hanya dapat diakses dalam blok kode');
+  print('     tempat mereka didefinisikan.');
+  
+  void demoScope() {
+    var insideVar = 'hanya bisa diakses di dalam fungsi';
+    print('     insideVar dapat diakses di dalam fungsi: $insideVar');
+  }
+  demoScope();
+  
+  print('   - Lexical closures: Fungsi dapat mengakses variabel dari lingkup luar,');
+  print('     bahkan setelah fungsi luar selesai dieksekusi.');
+  
+  Function makeCounter() {
+    int count = 0;
+    return () {
+      count++;
+      return count;
+    };
+  }
+  
+  var counter = makeCounter();
+  print('     Counter panggilan pertama: ${counter()}');
+  print('     Counter panggilan kedua: ${counter()}');
+  print('     Counter panggilan ketiga: ${counter()}');
+  print('');
+
+  // Tugas 6: Return multiple values di Functions
+  print('6. Return multiple values di Functions:');
+  print('   Dart dapat mengembalikan beberapa nilai menggunakan Records (Dart 3.0+).');
+  
+  (String, String, int) getPersonInfo() {
+    return ('Ahmad Fadlih', 'Malang', 20);
+  }
+  
+  var personInfo = getPersonInfo();
+  print('   Data person: Nama=${personInfo.$1}, Kota=${personInfo.$2}, Umur=${personInfo.$3}');
+  print('');
+
+  // Jawaban No. 7: Return multiple values with Records
+  var userData = getUserData();
+  print('Mengembalikan multiple value: Nama: ${userData.$1}, Umur: ${userData.$2}');
+}
+
+// Fungsi tukar untuk Record
+(int, int) tukar((int, int) record) {
+  return (record.$2, record.$1);
+}
+
+// Fungsi bantu untuk Tugas No. 7
+(String, int) getUserData() {
+  return ('Ahmad Fadlih Wahyu Sardana', 21);
+}
+

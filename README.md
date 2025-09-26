@@ -1,128 +1,165 @@
-# Laporan Tugas Praktikum: Pengantar Bahasa Pemrograman Dart (Bagian 2)
-
-## Praktikum 1: Menerapkan Control Flows (if/else)
-
-Praktikum ini berfokus pada penggunaan pernyataan `if/else` dan pentingnya tipe data boolean dalam kondisi.
-
-**Kode Asli (Bermasalah):**
-```dart
-String test = "true";
-if (test) {
-    print("Kebenaran");
-}
-```
-
-**Kode yang Telah Diperbaiki:**
-```dart
-String test = "true";
-if (test == "true") {
-    print("Kebenaran");
-}
-```
-
-**Penjelasan:**  
-Kode asli mengalami error karena Dart membutuhkan ekspresi boolean (`true` atau `false`) di dalam kondisi `if`. Variabel `test` bertipe `String` dengan nilai `"true"`, bukan `bool`. Solusinya adalah dengan membandingkan nilai string-nya secara eksplisit.
-
-**Tampilan hasil praktikum 1:**  
-*Output program setelah perbaikan kode if/else*
-
-![Screenshot Praktikum 1](img/Praktikum1codelab3.png)
+# Laporan Praktikum Dart – Codelab 04 (Bagian 3)
+Fokus: List, Set, Map, Spread / Control-flow List, Records (Dart 3)
 
 ---
 
-## Praktikum 2: Menerapkan Perulangan (while dan do-while)
-
-Praktikum ini membahas perulangan `while` dan `do-while`, serta masalah inisialisasi variabel.
-
-**Kode Asli (Bermasalah):**
-```dart
-while (counter < 33) {
-    print(counter);
-    counter++;
-}
-```
-
-**Kode yang Telah Diperbaiki:**
-```dart
-int counter = 0;
-while (counter < 33) {
-    print(counter);
-    counter++;
-}
-```
-
-**Penjelasan:**  
-Kode asli mengalami error karena variabel `counter` tidak pernah dideklarasikan atau diinisialisasi. Solusinya adalah dengan menambahkan `int counter = 0;` sebelum perulangan dimulai.
-
-**Tampilan hasil praktikum 2:**  
-*Output program setelah perbaikan kode perulangan while*
-
-![Screenshot Praktikum 2](img/Praktikum1codelab3.png)
+## 👤 Data Mahasiswa
+| Nama | NIM | Kelas |
+|------|-----|-------|
+| Ahmad Fadlih Wahyu Sardana | 2341720069 | TI-3H |
 
 ---
 
-## Praktikum 3: Menerapkan Perulangan (for dan break/continue)
-
-Praktikum ini berfokus pada perulangan `for` dan penggunaan `break` serta `continue`.
-
-**Kode Asli (Bermasalah):**
-```dart
-for (Index = 10; index < 27; index++) {
-    print(Index);
-}
-```
-
-**Kode yang Telah Diperbaiki:**
-```dart
-for (int index = 10; index < 27; index++) {
-    print(index);
-}
-```
-
-**Penjelasan:**  
-Kode ini mengalami error karena Dart bersifat case-sensitive. Variabel `Index` (huruf kapital) berbeda dengan `index` (huruf kecil). Solusinya adalah dengan menggunakan nama variabel yang konsisten dan mendeklarasikan tipe datanya (`int`).
-
-**Tampilan hasil praktikum 3:**  
-*Output program setelah perbaikan kode perulangan for*
-
-![Screenshot Praktikum 3](img/Praktikum1codelab3.png)
+## 📑 Daftar Isi
+1. Ringkasan Fitur
+2. Praktikum 1 – List
+3. Praktikum 2 – Set
+4. Praktikum 3 – Map
+5. Praktikum 4 – Spread & Control-flow List
+6. Praktikum 5 – Records
+7. Jawaban Tugas Praktikum
+8. Referensi Kode
+9. Rekomendasi
 
 ---
 
-## Tugas Tambahan: Program Bilangan Prima
+## 1. Ringkasan Fitur
+| Konsep | Contoh | Catatan |
+|--------|--------|---------|
+| List | `[1,2,3]` | Terurut, izinkan duplikat |
+| Set | `{'a','b'}` | Elemen unik, tidak berindeks |
+| Map | `{'k':'v'}` | Key → Value |
+| Spread | `[...list]` | Salin / gabung list |
+| Null-aware spread | `[...?list]` | Abaikan jika null |
+| Inline if | `['A', if (flag) 'B']` | Kondisional |
+| Inline for | `['#0', for (var i in l) '#$i']` | Iteratif |
+| Record | `('A', b:1)` | Bundel ringan |
+| Akses record | `$1`, `.b` | Posisi / nama |
 
-Tugas ini mengharuskan pembuatan program untuk menemukan bilangan prima dari 0 hingga 201.
+---
 
-### Kode Program
+## 2. Praktikum 1 – List
+Tujuan: Deklarasi, akses, mutasi, fixed-length list.
+
 ```dart
-print('Mencari bilangan prima dari 0 sampai 201...');
+var list = [1, 2, 3];
+list[1] = 1;
 
-for (int i = 2; i <= 201; i++) {
-    if (isPrima(i)) {
-        print('Bilangan prima ditemukan: $i');
-        print('Nama: $nama');
-        print('NIM: $nim');
-        print('---');
-    }
-}
+final listBaru = List<Object?>.filled(5, null);
+listBaru[1] = "Ahmad Fadlih Wahyu Sardana";
+listBaru[2] = "2341720069";
+```
+Screenshot: `img/codelab04_dart_part3_praktikum1.png`
 
-bool isPrima(int number) {
-    if (number <= 1) {
-        return false;
-    }
-    for (int i = 2; i <= number / 2; i++) {
-        if (number % i == 0) {
-            return false;
-        }
-    }
-    return true;
+---
+
+## 3. Praktikum 2 – Set
+Tujuan: Koleksi unik & perbedaan `{}` (Map vs Set).
+
+```dart
+var halogens = {'fluorine', 'chlorine', 'bromine', 'iodine', 'astatine'};
+var names1 = <String>{};
+Set<String> names2 = {};
+names1.add('Ahmad Fadlih Wahyu Sardana');
+names2.addAll(['Ahmad Fadlih Wahyu Sardana', '2341720069']);
+```
+Screenshot: `img/codelab04_dart_part3_praktikum2.png`
+
+---
+
+## 4. Praktikum 3 – Map
+Tujuan: Key–value, mutasi, tipe kuat.
+
+```dart
+var gifts = {'first': 'partridge', 'second': 'turtledoves', 'fifth': 1};
+var mhs1 = <String, String>{};
+mhs1['nama'] = 'Ahmad Fadlih Wahyu Sardana';
+mhs1['nim'] = '2341720069';
+```
+Screenshot: `img/codelab04_dart_part3_praktikum3.png`
+
+---
+
+## 5. Praktikum 4 – Spread & Control-flow List
+```dart
+var listPraktikum4 = [1, 2, 3];
+var list2 = [0, ...listPraktikum4];
+
+var list1 = [1, 2, null];
+var list3 = [0, ...?list1];
+
+var promoActive = true;
+var nav = ['Home', 'Furniture', 'Plants', if (promoActive) 'Outlet'];
+
+var listOfInts = [1, 2, 3];
+var listOfStrings = ['#0', for (var i in listOfInts) '#$i'];
+```
+Screenshot: `img/codelab04_dart_part3_praktikum4.png`
+
+---
+
+## 6. Praktikum 5 – Records (Dart 3)
+```dart
+var record = ('first', a: 2, b: true, 'last');
+(String, int) mahasiswa3 = ('Ahmad Fadlih Wahyu Sardana', 2341720069);
+
+(int, int) tukar((int, int) pair) => (pair.$2, pair.$1);
+var swapped = tukar((10, 20)); // (20, 10)
+```
+Screenshot: `img/codelab04_dart_part3_praktikum5.png`
+
+---
+
+## 7. Jawaban Tugas Praktikum
+
+=== Jawaban Tugas Praktikum ===
+
+Screenshot: `img/codelab04_tugaTugas_Praktikumcodelab04s.png`
+1. Functions dalam bahasa Dart  
+Functions adalah blok kode yang dapat dipanggil untuk melakukan tugas tertentu dan membuat kode modular serta reusable.  
+Contoh:  
+```dart
+void f1(int a, String b);                 // Positional wajib
+void f2(int a, [int? b]);                 // Positional opsional
+void f3({int? age});                      // Named opsional
+void f4({required String name});          // Named wajib
+```
+
+### 7.3 First-class Functions
+```dart
+var add = (int a, int b) => a + b;
+int operate(int a, int b, int Function(int, int) op) => op(a, b);
+```
+
+### 7.4 Anonymous Function
+```dart
+var doubled = [1,2,3].map((n) => n * 2);
+```
+
+### 7.5 Lexical Scope & Closure
+```dart
+Function counter() {
+  int c = 0;
+  return () => ++c;
 }
 ```
 
-**Penjelasan:**  
-Program ini menggunakan `for loop` untuk mengiterasi angka dari 2 hingga 201. Untuk setiap angka, fungsi `isPrima()` dipanggil untuk memeriksa apakah angka tersebut prima. Jika hasilnya `true`, program akan mencetak bilangan prima beserta nama dan NIM Anda. Fungsi `isPrima` bekerja dengan memeriksa apakah angka memiliki faktor pembagi selain 1 dan dirinya sendiri.
+### 7.6 Return Multiple Values
+```dart
+(String, int) getUser() => ('Alice', 25);
+```
 
-**Tampilan hasil tugas bilangan prima:**  
-*Output program pencarian bilangan prima*
+### 7.7 Contoh Record di Proyek
+```dart
+(String, int) getUserData() => ('Ahmad', 21);
+var data = getUserData();
+print(data.$1); // Nama
+```
 
-![Screenshot Tugas Bilangan Prima](img/TugasPraktikumcodelab3.png)
+---
+
+## 8. Referensi Kode
+Folder: `src/codelab04_dart_part3`  
+Fungsi utama: `main`, `tukar`, `getUserData`
+
+---
