@@ -1,4 +1,4 @@
-# Tugas Praktikum Flutter Fundamental (Part 1)
+# Codelab 05 – Flutter Fundamental (Part 1)
 
 ## Identitas
 - Nama: **Ahmad Fadlih Wahyu Sardana**  
@@ -28,11 +28,26 @@ Langkah:
 2. Pilih folder kerja.  
 3. Masukkan nama: `hello_world`.  
 4. Setelah selesai muncul pesan: "Your Flutter Project is ready!".  
+Karena beberapa gambar langkah tidak tersedia / hilang, berikut ringkasan alternatif berbasis perintah:
 
-<p align="center"><img src="img/Prak_1_langkah 1.png" width="500"/></p>
-<p align="center"><img src="img/Prak_1_langkah2.png" width="500"/></p>
-<p align="center"><img src="img/Prak_1_langkah3.png" width="500"/></p>
-<p align="center"><img src="img/Prak_1_langkah4.png" width="500"/></p>
+```bash
+# (Opsional) Membuat project lewat CLI
+flutter create hello_world
+
+# Masuk ke folder
+cd hello_world
+
+# Membuka di VS Code (bila pakai terminal)
+code .
+```
+
+Struktur awal penting (disederhanakan):
+```
+hello_world/
+  lib/
+    main.dart        <- Titik masuk aplikasi
+  pubspec.yaml       <- Konfigurasi dependencies & assets
+```
 
 ---
 
@@ -41,7 +56,15 @@ Pastikan device terdeteksi (`flutter devices`). Jalankan:
 ```
 flutter run
 ```
-<p align="center"><img src="img/Prak_2.jpg" width="350"/></p>
+Contoh output ringkas (tergantung versi SDK):
+```
+Launching lib/main.dart on sdk gphone64 x86 64 in debug mode...
+Running Gradle task 'assembleDebug'... (xx.xs)
+✓  Built build/app/outputs/flutter-apk/app-debug.apk.
+Installing build/app/outputs/flutter-apk/app-debug.apk... (xxms)
+Debug service listening on ws://127.0.0.1:<port>/xxxx=
+Syncing files to device sdk gphone64 x86 64... (xxms)
+```
 
 ---
 
@@ -64,60 +87,201 @@ Ringkas alur:
   git push
   ```
 5. Jalankan aplikasi, ubah text menjadi nama lengkap, screenshot → simpan `images/01.png`.  
+berikut contoh perubahan pada `lib/main.dart` yang menampilkan identitas:
 
+```dart
+import 'package:flutter/material.dart';
 
-Cuplikan:
-<p align="center"><img src="img/Prak_3_Langkah4.png" width="240"/> <img src="img/Prak_3_Langkah5.png" width="240"/> <img src="img/Prak_3_Langkah6.png" width="240"/></p>
-<p align="center"><img src="img/Prak_3_Langkah9.png" width="500"/></p>
-<p align="center"><img src="img/Prak_3_Langkah10.png" width="650"/></p>
-<p align="center"><img src="img/Prak_3_Langkah11.png" width="650"/></p>
-<p align="center"><img src="img/Prak_3_Langkah12.png" width="650"/></p>
+void main() => runApp(const MyApp());
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Hello World',
+      theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.teal),
+      home: const HomePage(),
+      debugShowCheckedModeBanner: false,
+    );
+  }
+}
+
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Hello World')), 
+      body: const Center(
+        child: Text(
+          'Ahmad Fadlih Wahyu Sardana\nNIM 2341720069',
+          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+          textAlign: TextAlign.center,
+        ),
+      ),
+    );
+  }
+}
+```
+
+Langkah dokumentasi: setiap perubahan penting → `git add .` → `git commit -m "deskripsi"` → `git push`.
 
 ---
 
 ## Praktikum 4 – Widget Dasar
 
 ### 1. Text Widget
-`text_widget.dart` menampilkan teks dengan gaya khusus.  
-<p align="center"><img src="img/Prak_4_Langkah1,2.png" width="650"/></p>
-<p align="center"><img src="img/Prak_4_Langkah1.png" width="500"/></p>
+`text_widget.dart` menampilkan teks dengan gaya khusus. Karena gambar tidak lengkap, berikut potongan ringkas gaya kontainer yang dipakai:
+
+```dart
+Container(
+  padding: const EdgeInsets.all(24),
+  decoration: BoxDecoration(
+    gradient: const LinearGradient(colors: [Colors.teal, Colors.tealAccent]),
+    borderRadius: BorderRadius.circular(16),
+  ),
+  child: const Text(
+    'Belajar Flutter: Ahmad Fadlih Wahyu Sardana\nNIM 2341720069',
+    textAlign: TextAlign.center,
+    style: TextStyle(
+      fontSize: 20,
+      fontWeight: FontWeight.bold,
+      color: Colors.white,
+    ),
+  ),
+)
+```
 
 ### 2. Image Widget
-Menampilkan aset lokal.  
-<p align="center"><img src="img/Prak_4_Langkah2.png" width="650"/></p>
+Menampilkan aset lokal. Contoh pemanggilan:
+
+```dart
+const Image(image: AssetImage('logo_polinema.jpg'), width: 160);
+```
 
 ---
 
 ## Praktikum 5 – Material & Cupertino Widgets
 
 ### 1. Cupertino Button & Loading
-<p align="center"><img src="img/Prak_5_Langkah1.png" width="600"/></p>
+```dart
+CupertinoButton(
+  color: CupertinoColors.activeBlue,
+  onPressed: () {},
+  child: const Text('Proses'),
+);
+const CupertinoActivityIndicator();
+```
 
 ### 2. Floating Action Button
-<p align="center"><img src="img/Prak_5_Langkah2.png" width="600"/></p>
+```dart
+FloatingActionButton(
+  onPressed: increment,
+  child: const Icon(Icons.add),
+);
+```
 
 ### 3. Scaffold + FAB + Counter
-<p align="center"><img src="img/Prak_5_Langkah3.png" width="650"/></p>
+```dart
+Scaffold(
+  appBar: AppBar(title: const Text('Counter')),
+  floatingActionButton: FloatingActionButton(onPressed: increment, child: const Icon(Icons.add)),
+  body: Center(child: Text('Count: $value')),
+);
+```
 
 ### 4. Dialog (AlertDialog)
-<p align="center"><img src="img/Prak_5_Langkah4,1.png" width="600"/></p>
-<p align="center"><img src="img/Prak_5_Langkah4,2.png" width="400"/></p>
+```dart
+showDialog(
+  context: context,
+  builder: (c) => AlertDialog(
+    title: const Text('Konfirmasi'),
+    content: const Text('Lanjutkan proses?'),
+    actions: [
+      TextButton(onPressed: () => Navigator.pop(c), child: const Text('Batal')),
+      FilledButton(onPressed: () {}, child: const Text('OK')),
+    ],
+  ),
+);
+```
 
 ### 5. Input (TextField)
-<p align="center"><img src="img/Prak_5_Langkah5,1.png" width="500"/> <img src="img/Prak_5_Langkah5,2.png" width="500"/></p>
+```dart
+TextField(
+  controller: nameCtrl,
+  decoration: const InputDecoration(
+    labelText: 'Nama Lengkap',
+    prefixIcon: Icon(Icons.person_outline),
+    border: OutlineInputBorder(),
+  ),
+)
+```
 
 ### 6. Date Picker
-<p align="center"><img src="img/Prak_5_Langkah6,1.png" width="500"/></p>
-<p align="center"><img src="img/Prak_5_langkah6,2.png" width="500"/></p>
-<p align="center"><img src="img/Prak_5_Langkah6,3.png" width="500"/></p>
+```dart
+final picked = await showDatePicker(
+  context: context,
+  initialDate: selected,
+  firstDate: DateTime(2000),
+  lastDate: DateTime(2100),
+);
+if (picked != null) setState(() => selected = picked);
+```
 
 ---
 
 ## Tugas Tambahan – Namer App
-Hasil modifikasi codelab (favorit, navigasi, identitas ditampilkan).
-<p align="center"><img src="img/namerApp1.png" width="600"/></p>
-<p align="center"><img src="img/namerApp2.png" width="600"/></p>
-<p align="center"><img src="img/namerApp3.png" width="600"/></p>
+Hasil modifikasi codelab (favorit, navigasi, identitas ditampilkan) – gambar tidak tersedia sehingga diganti cuplikan kode inti.
+
+State management memakai Provider:
+```dart
+class MyAppState extends ChangeNotifier {
+  WordPair current = WordPair.random();
+  final favorites = <WordPair>[];
+
+  void getNext() {
+    current = WordPair.random();
+    notifyListeners();
+  }
+
+  void toggleFavorite() {
+    if (favorites.contains(current)) {
+      favorites.remove(current);
+    } else {
+      favorites.add(current);
+    }
+    notifyListeners();
+  }
+}
+```
+
+Widget kartu kata dengan animasi:
+```dart
+class BigCard extends StatelessWidget {
+  const BigCard({super.key, required this.pair});
+  final WordPair pair;
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final style = theme.textTheme.headlineLarge!.copyWith(
+      color: theme.colorScheme.onPrimary,
+      fontWeight: FontWeight.bold,
+    );
+    return Card(
+      elevation: 4,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      color: theme.colorScheme.primary,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 32, horizontal: 48),
+        child: Text(pair.asLowerCase, style: style),
+      ),
+    );
+  }
+}
+```
+
+Halaman profil menampilkan identitas (Nama, NIM, No Absen) dalam kartu bergaya.
 
 ---
 

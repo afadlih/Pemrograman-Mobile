@@ -26,7 +26,8 @@ class MyApp extends StatelessWidget {
               colorScheme: colorScheme,
               appBarTheme: AppBarTheme(
                 elevation: 0,
-                backgroundColor: colorScheme.surface.withOpacity(.9),
+                // Use modern API (withValues) instead of deprecated withOpacity
+                backgroundColor: colorScheme.surface.withValues(alpha: 0.9),
                 centerTitle: true,
                 titleTextStyle: TextStyle(
                   fontSize: 18,
@@ -100,18 +101,14 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     Widget page;
-    switch (selectedIndex) {
-      case 0:
-        page = GeneratorPage();
-        break;
-      case 1:
-        page = FavoritesPage();
-        break;
-      case 2:
-        page = ProfilePage();
-        break;
-      default:
-        throw UnimplementedError('no widget for $selectedIndex');
+    if (selectedIndex == 0) {
+      page = GeneratorPage();
+    } else if (selectedIndex == 1) {
+      page = FavoritesPage();
+    } else if (selectedIndex == 2) {
+      page = ProfilePage();
+    } else {
+      throw UnimplementedError('no widget for $selectedIndex');
     }
 
     return LayoutBuilder(
@@ -151,7 +148,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       colors: [
                         Theme.of(
                           context,
-                        ).colorScheme.primaryContainer.withOpacity(.85),
+                        ).colorScheme.primaryContainer.withValues(alpha: 0.85),
                         Theme.of(context).colorScheme.surface,
                       ],
                       begin: Alignment.topLeft,
@@ -295,7 +292,7 @@ class FavoritesPage extends StatelessWidget {
                 label: Text(pair.asLowerCase),
                 backgroundColor: Theme.of(
                   context,
-                ).colorScheme.primaryContainer.withOpacity(.5),
+                ).colorScheme.primaryContainer.withValues(alpha: 0.5),
               ),
           ],
         ),

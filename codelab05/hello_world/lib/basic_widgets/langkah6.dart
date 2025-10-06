@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key});
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,15 +21,15 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title});
+  const MyHomePage({super.key, required this.title});
 
   final String title;
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  MyHomePageState createState() => MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class MyHomePageState extends State<MyHomePage> {
   DateTime selectedDate = DateTime.now();
 
   Future<void> _selectDate(BuildContext context) async {
@@ -64,12 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             const SizedBox(height: 20.0),
             ElevatedButton(
-              onPressed: () => {
-                _selectDate(context),
-                print(
-                  selectedDate.day + selectedDate.month + selectedDate.year,
-                ),
-              },
+              onPressed: () => _selectDate(context),
               child: const Text('Pilih Tanggal'),
             ),
             const SizedBox(height: 30),
