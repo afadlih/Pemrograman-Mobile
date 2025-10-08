@@ -237,7 +237,3 @@ expect(find.text('Sugar'), findsOneWidget); // di halaman detail
 
 
 ---
-
----
-
-Selesai. Dokumentasi ini sudah disinkronkan dengan keadaan kode terakhir.
