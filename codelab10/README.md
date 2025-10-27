@@ -2,7 +2,7 @@
 
 ## Informasi Mahasiswa
 - **Nama**: Ahmad Fadlih
-- **NIM**: 2241760119
+- **NIM**: 2341720069
 - **Kelas**: TI-3F / 03
 
 ---
@@ -16,7 +16,7 @@ Praktikum ini bertujuan untuk memahami konsep dasar state management dalam Flutt
 
 ### Hasil Akhir Aplikasi
 
-![Master Plan App Demo](./img/praktikum1_demo.gif)
+![Master Plan App Demo](./img/langkah9_demo)
 
 **Penjelasan Aplikasi:**
 Aplikasi Master Plan yang telah dibuat merupakan aplikasi manajemen tugas sederhana dengan fitur-fitur berikut:
