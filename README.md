@@ -7,5 +7,5 @@ Repositori ini akan berisi tugas, latihan, dan proyek yang dikerjakan selama per
 
 - Nama : Ahmad Fadlih Wahyu Sardana
 - NIM  : 2341720069
-- Kelas: TI-3H
+- Kelas: TI-3F
 
