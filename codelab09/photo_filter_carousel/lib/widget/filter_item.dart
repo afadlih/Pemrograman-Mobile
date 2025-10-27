@@ -17,10 +17,30 @@ class FilterItem extends StatelessWidget {
           padding: const EdgeInsets.all(8),
           child: ClipOval(
             child: Image.network(
-              'https://docs.flutter.dev/cookbook/img-files'
-              '/effects/instagram-buttons/millennial-texture.jpg',
+              'https://picsum.photos/200',
               color: color.withOpacity(0.5),
               colorBlendMode: BlendMode.hardLight,
+              fit: BoxFit.cover,
+              errorBuilder: (context, error, stackTrace) {
+                // Fallback jika gagal load image
+                return Container(
+                  color: color,
+                  child: const Center(
+                    child: Icon(Icons.photo, color: Colors.white54, size: 40),
+                  ),
+                );
+              },
+              loadingBuilder: (context, child, loadingProgress) {
+                if (loadingProgress == null) return child;
+                return Center(
+                  child: CircularProgressIndicator(
+                    value: loadingProgress.expectedTotalBytes != null
+                        ? loadingProgress.cumulativeBytesLoaded /
+                              loadingProgress.expectedTotalBytes!
+                        : null,
+                  ),
+                );
+              },
             ),
           ),
         ),
