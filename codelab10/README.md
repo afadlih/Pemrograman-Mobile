@@ -3,6 +3,7 @@
 ## Informasi Mahasiswa
 - **Nama**: Ahmad Fadlih
 - **NIM**: 2341720069
+- **NIM**: 2341720069
 - **Kelas**: TI-3F / 03
 
 ---
@@ -14,20 +15,9 @@ Praktikum ini bertujuan untuk memahami konsep dasar state management dalam Flutt
 
 ---
 
-### 📸 Screenshot Praktikum 1
-**Status**: ✅ 5 dari 6 screenshot tersedia (83% selesai)
+### Hasil Akhir Aplikasi
 
-Screenshot aplikasi tersedia di folder `img/`:
-- ✅ `app_empty.jpeg` - Tampilan aplikasi kosong
-- ✅ `app_adding_task.jpeg` - Proses menambah tugas
-- ✅ `app_with_checkbox.jpeg` - Tampilan dengan checkbox
-- ✅ `app_editting.jpeg` - Proses edit tugas
-- ✅ `langkah9_demo.gif` - Demo interaksi langkah 9
-- ⏳ `praktikum1_demo.gif` - Demo komprehensif (pending)
-
-> Lihat detail screenshot di [SCREENSHOT_GUIDE.md](img/SCREENSHOT_GUIDE.md)
-
----
+![Master Plan App Demo](./img/langkah9_demo)
 
 **Penjelasan Aplikasi:**
 Aplikasi Master Plan yang telah dibuat merupakan aplikasi manajemen tugas sederhana dengan fitur-fitur berikut:
